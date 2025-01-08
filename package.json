@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.5",
+    "cors": "^2.8.5",
     "cra-template": "1.2.0",
     "express": "^4.21.2",
     "pg": "^8.13.1",
@@ -10,6 +13,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^7.1.1",
     "react-scripts": "5.0.1",
+    "typescript": "^5.7.2",
     "web-vitals": "^4.2.4"
   },
   "scripts": {
@@ -41,5 +45,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/react": "^19.0.3",
+    "@types/react-dom": "^19.0.2",
+    "@types/react-router-dom": "^5.3.3"
+  }
 }
