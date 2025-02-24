@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 
@@ -7,14 +8,16 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-const link = document.createElement('link');
-link.href = 'https://fonts.googleapis.com/css2?family=Caprasimo&display=swap';
-link.rel = 'stylesheet';
+const link = document.createElement("link");
+link.href = "https://fonts.googleapis.com/css2?family=Caprasimo&display=swap";
+link.rel = "stylesheet";
 document.head.appendChild(link);
 
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter basename="/tirth-olympics">
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
