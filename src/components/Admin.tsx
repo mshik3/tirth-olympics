@@ -27,7 +27,10 @@ const Admin: React.FC = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: name === "score" ? parseInt(value, 10) : value });
+    setFormData({
+      ...formData,
+      [name]: name === "score" ? parseInt(value, 10) : value,
+    });
   };
 
   const handleLoginChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -48,11 +51,14 @@ const Admin: React.FC = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/scores`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `https://tirtholympicsbackend.mshik3.workers.dev/api/scores`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
       if (response.ok) {
         alert("Score updated successfully");
       } else {
@@ -60,6 +66,7 @@ const Admin: React.FC = () => {
       }
     } catch (error) {
       console.error("Error updating score:", error);
+      alert("An error occurred");
     }
   };
 
