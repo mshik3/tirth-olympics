@@ -18,6 +18,7 @@ const Scoreboard: React.FC = () => {
           `${process.env.REACT_APP_API_BASE_URL}/api/scores`
         );
         const data: Score[] = await response.json();
+        console.log("setting score data to", data);
         setScores(data);
       } catch (error) {
         console.error("Error fetching scores:", error);
