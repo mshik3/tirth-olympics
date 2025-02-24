@@ -1,12 +1,12 @@
 import express from "express";
-import { readData, updateCompetitor } from "./db.js";
-import cors from 'cors';
+import { getAllCompetitors, updateCompetitor } from "./db.js";
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 5001;
 
 const corsOptions = {
-  origin: ['http://localhost:3000'], // Add your frontend domain here
+  origin: ["http://localhost:3000"], // Add your frontend domain here
 };
 
 // Middleware to parse JSON bodies
@@ -16,7 +16,7 @@ app.use(cors(corsOptions));
 // Endpoint to get scores
 app.get("/api/scores", (req, res) => {
   try {
-    const scores = readData();
+    const scores = getAllCompetitors();
     res.json(scores);
   } catch (error) {
     console.error(error);

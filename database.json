@@ -1,13 +1,13 @@
 [
-  { "name": "Mustafa", "totalScore": 0, "scores": [] },
-  { "name": "Tirth", "totalScore": 0, "scores": [] },
-  { "name": "Kaushik", "totalScore": 0, "scores": [] },
-  { "name": "Anil", "totalScore": 0, "scores": [] },
-  { "name": "Armaan", "totalScore": 0, "scores": [] },
-  { "name": "Eshwar", "totalScore": 0, "scores": [] },
-  { "name": "Nandish", "totalScore": 0, "scores": [] },
-  { "name": "Neel", "totalScore": 0, "scores": [] },
-  { "name": "Niel", "totalScore": 0, "scores": [] },
-  { "name": "Parth", "totalScore": 0, "scores": [] },
-  { "name": "Satyajeet", "totalScore": 0, "scores": [] }
+  { "name": "Mustafa", "totalScore": 10, "scores": [] },
+  { "name": "Tirth", "totalScore": 3, "scores": [] },
+  { "name": "Kaushik", "totalScore": 4, "scores": [] },
+  { "name": "Anil", "totalScore": 5, "scores": [] },
+  { "name": "Armaan", "totalScore": 6, "scores": [] },
+  { "name": "Eshwar", "totalScore": 1, "scores": [] },
+  { "name": "Nandish", "totalScore": 1, "scores": [] },
+  { "name": "Neel", "totalScore": 1, "scores": [] },
+  { "name": "Niel", "totalScore": 1, "scores": [] },
+  { "name": "Parth", "totalScore": 1, "scores": [] },
+  { "name": "Satyajeet", "totalScore": 1, "scores": [] }
 ]

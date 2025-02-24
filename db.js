@@ -48,3 +48,9 @@ export function getCompetitor(name) {
   const data = readData();
   return data.find(c => c.name === name) || null;
 }
+
+// Function to get all competitors' information sorted by total score
+export function getAllCompetitors() {
+  const data = readData();
+  return data.sort((a, b) => b.totalScore - a.totalScore);
+}
