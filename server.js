@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 const corsOptions = {
-  origin: ["http://localhost:3000"], // Add your frontend domain here
+  origin: ["https://mshik3.github.io/tirth-olympics"], // Add your frontend domain here
 };
 
 // Middleware to parse JSON bodies
