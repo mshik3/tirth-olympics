@@ -2,9 +2,8 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 
 interface FormData {
   name: string;
-  score: number;
+  points: number;
   sport: string;
-  team: string;
 }
 
 interface LoginData {
@@ -15,9 +14,8 @@ interface LoginData {
 const Admin: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
-    score: 0,
+    points: 0,
     sport: "",
-    team: "",
   });
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [loginData, setLoginData] = useState<LoginData>({
@@ -107,11 +105,11 @@ const Admin: React.FC = () => {
             />
           </div>
           <div>
-            <label>Score:</label>
+            <label>Points:</label>
             <input
               type="number"
-              name="score"
-              value={formData.score}
+              name="points"
+              value={formData.points}
               onChange={handleChange}
             />
           </div>
@@ -121,15 +119,6 @@ const Admin: React.FC = () => {
               type="text"
               name="sport"
               value={formData.sport}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Team:</label>
-            <input
-              type="text"
-              name="team"
-              value={formData.team}
               onChange={handleChange}
             />
           </div>
