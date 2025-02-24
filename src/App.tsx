@@ -5,12 +5,10 @@ import Admin from "./components/Admin";
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Scoreboard />} />
-        <Route path="/admin" element={<Admin />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<Scoreboard />} />
+      <Route path="/admin" element={<Admin />} />
+    </Routes>
   );
 };
 
