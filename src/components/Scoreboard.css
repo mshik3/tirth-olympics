@@ -1,36 +1,121 @@
 /* Scoreboard Styles */
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  color: #333;
+  background-color: #ffffff;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.title {
+  font-family: "Caprasimo";
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .top-three {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .top-score {
   text-align: center;
-  margin: 0 10px;
-  padding: 10px;
   border-radius: 8px;
-  background-color: #f0f0f0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-}
-
-.top-score-1 {
-  background-color: #ffd700; /* Gold */
-}
-
-.top-score-2 {
-  background-color: #c0c0c0; /* Silver */
-}
-
-.top-score-3 {
-  background-color: #cd7f32; /* Bronze */
+  flex-grow: 1;
 }
 
 .top-score:hover {
   transform: scale(1.05);
+}
+
+.top-score-1 {
+  font-size: 2em;
+  flex: 3;
+}
+
+.top-score-2,
+.top-score-3 {
+  font-size: 1em;
+  flex: 2;
+}
+
+.scoreboard {
+  width: 100%;
+  max-width: 400px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.image-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+
+.image-box {
+  flex: 1;
+  height: 80px;
+  width: 80px;
+  background-size: cover;
+  background-position: center;
+  margin: 0 5px;
+}
+
+.score-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  padding-bottom: 40px;
+}
+
+.score {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.score:last-child {
+  border-bottom: none;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.points {
+  font-weight: normal;
+  color: #007bff;
 }
 
 .other-scores {
@@ -49,4 +134,30 @@
 
 .other-scores li:hover {
   background-color: #f1f1f1;
+}
+
+.placeName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-align: center;
+}
+
+.topPoints {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 40px;
+  }
+
+  .scoreboard {
+    max-width: 600px;
+  }
 }

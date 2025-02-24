@@ -5,6 +5,7 @@ interface Score {
   id: number;
   name: string;
   points: number;
+  totalScore: number;
 }
 
 const Scoreboard: React.FC = () => {
@@ -17,8 +18,6 @@ const Scoreboard: React.FC = () => {
           `${process.env.REACT_APP_API_BASE_URL}/api/scores`
         );
         const data: Score[] = await response.json();
-        // Sort scores by points in descending order
-        data.sort((a, b) => b.points - a.points);
         setScores(data);
       } catch (error) {
         console.error("Error fetching scores:", error);
@@ -28,73 +27,66 @@ const Scoreboard: React.FC = () => {
     fetchScores();
   }, []);
 
-  return (
-    <div>
-      <h1>Scoreboard</h1>
-      <div
-        className="top-three"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {/* 2nd Place */}
-        {scores[1] && (
+  const TopThree: React.FC<{ scores: Score[] }> = ({ scores }) => {
+    const reorderedScores = [scores[1], scores[0], scores[2]]; // 2nd, 1st, 3rd
+    return (
+      <div className="top-three">
+        {reorderedScores.map((player, index) => (
           <div
-            key={scores[1].id}
-            className="top-score top-score-2"
-            style={{
-              fontSize: "2em",
-              flex: 2,
-              textAlign: "center",
-              margin: "0 10px",
-            }}
+            key={player.name}
+            className={`top-score top-score-${index}`}
+            style={{ flexGrow: index === 1 ? 2 : 3 }}
           >
-            <div>{`2. ${scores[1].name}`}</div>
-            <div>{`${scores[1].points} points`}</div>
+            <img
+              src={`/images/${
+                index === 1 ? "first" : index === 0 ? "second" : "third"
+              }-place.png`}
+              alt={`${
+                index === 1 ? "First" : index === 0 ? "Second" : "Third"
+              } Place`}
+              style={{
+                height: index === 1 ? "150px" : "100px",
+                width: index === 1 ? "150px" : "100px",
+                objectFit: "contain",
+              }}
+            />
+            <div className="placeName">{player.name}</div>
+            <div className="topPoints">{player.totalScore} points</div>
           </div>
-        )}
-        {/* 1st Place */}
-        {scores[0] && (
-          <div
-            key={scores[0].id}
-            className="top-score top-score-1"
-            style={{
-              fontSize: "4em",
-              flex: 4,
-              textAlign: "center",
-              margin: "0 10px",
-            }}
-          >
-            <div>{`1. ${scores[0].name}`}</div>
-            <div>{`${scores[0].points} points`}</div>
-          </div>
-        )}
-        {/* 3rd Place */}
-        {scores[2] && (
-          <div
-            key={scores[2].id}
-            className="top-score top-score-3"
-            style={{
-              fontSize: "2em",
-              flex: 1,
-              textAlign: "center",
-              margin: "0 10px",
-            }}
-          >
-            <div>{`3. ${scores[2].name}`}</div>
-            <div>{`${scores[2].points} points`}</div>
-          </div>
-        )}
-      </div>
-      <ul className="other-scores">
-        {scores.slice(3).map((score, index) => (
-          <li key={score.id}>{`${index + 4}. ${score.name} - ${
-            score.points
-          } points`}</li>
         ))}
-      </ul>
+      </div>
+    );
+  };
+
+  const ImageRow: React.FC = () => {
+    return (
+      <div className="image-row">
+        {[1, 2, 3].map((num) => (
+          <div
+            key={num}
+            className="image-box"
+            style={{
+              backgroundImage: `url('/images/tirth-${num}.png')`,
+            }}
+          />
+        ))}
+      </div>
+    );
+  };
+
+  return (
+    <div className="container">
+      <h1 className="title">Tirth Olympics</h1>
+      <ImageRow />
+      {scores.length >= 3 && <TopThree scores={scores.slice(0, 3)} />}
+      <div className="score-list">
+        {scores.slice(3).map((player) => (
+          <div key={player.name} className="score">
+            <span className="name">{player.name}</span>
+            <span className="points"> {player.totalScore} points</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

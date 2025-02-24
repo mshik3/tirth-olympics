@@ -7,6 +7,11 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
+const link = document.createElement('link');
+link.href = 'https://fonts.googleapis.com/css2?family=Caprasimo&display=swap';
+link.rel = 'stylesheet';
+document.head.appendChild(link);
+
 root.render(
   <React.StrictMode>
     <App />
