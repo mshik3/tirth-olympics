@@ -19,6 +19,8 @@ const Scoreboard: React.FC = () => {
         );
         const data: Score[] = await response.json();
         console.log("setting score data to", data);
+        // Sort scores by totalScore in descending order
+        data.sort((a, b) => b.totalScore - a.totalScore);
         setScores(data);
       } catch (error) {
         console.error("Error fetching scores:", error);
