@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 
 interface FormData {
   name: string;
@@ -17,18 +17,29 @@ const Admin: React.FC = () => {
     points: 0,
     sport: "",
   });
+  const [participants, setParticipants] = useState<string[]>([]);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [loginData, setLoginData] = useState<LoginData>({
     username: "",
     password: "",
   });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    async function fetchParticipants() {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/scores`);
+        const data = await response.json();
+        setParticipants(data.map((participant: { name: string }) => participant.name));
+      } catch (error) {
+        console.error("Error fetching participants:", error);
+      }
+    }
+    fetchParticipants();
+  }, []);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: name === "score" ? parseInt(value, 10) : value,
-    });
+    setFormData({ ...formData, [name]: name === "points" ? parseInt(value, 10) : value });
   };
 
   const handleLoginChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -97,12 +108,14 @@ const Admin: React.FC = () => {
         <form onSubmit={handleSubmit}>
           <div>
             <label>Name:</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
+            <select name="name" value={formData.name} onChange={handleChange}>
+              <option value="">Select a participant</option>
+              {participants.map((name) => (
+                <option key={name} value={name}>
+                  {name}
+                </option>
+              ))}
+            </select>
           </div>
           <div>
             <label>Points:</label>
